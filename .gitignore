@@ -35,3 +35,7 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+add_ssh.sh
+
+Mono-architecture -diagram.jpg
