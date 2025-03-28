@@ -17,7 +17,7 @@ resource "aws_vpc" "Website_vpc" {
   cidr_block = "10.0.0.0/16"
 
   tags = {
-    Name = "MonoAppServer"
+    Name = "2_Tier_AppServer"
   }
 }
 
@@ -31,7 +31,7 @@ resource "aws_subnet" "public_subnet" {
   availability_zone       = "eu-west-2a"
 
   tags = {
-    Name = "MonoAppServer"
+    Name = "2_Tier_AppServer"
   }
 }
 
@@ -40,7 +40,7 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.Website_vpc.id
 
   tags = {
-    Name = "MonoAppServer"
+    Name = "2_Tier_AppServer"
   }
 }
 
@@ -57,7 +57,7 @@ resource "aws_route_table" "public_rt" {
   }
 
   tags = {
-    Name = "MonoAppServer"
+    Name = "2_Tier_AppServer"
   }
 }
 
@@ -107,7 +107,7 @@ resource "aws_security_group" "ec2_sg" {
   }
 
   tags = {
-    Name = "MonoAppServer"
+    Name = "2_Tier_AppServer"
   }
 }
 
@@ -148,7 +148,7 @@ resource "aws_security_group" "nginx_sg" {
   }
 
   tags = {
-    Name = "MonoAppServer"
+    Name = "2_Tier_AppServer"
   }
 }
 
@@ -162,7 +162,7 @@ resource "aws_instance" "app_server" {
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
 
   tags = {
-    Name = "MonoAppServer-${count.index + 1}"
+    Name = "2_Tier_AppServer-${count.index + 1}"
   }
   user_data = file("app_script.sh")
   # user_data = <<-EOT
