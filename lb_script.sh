@@ -7,7 +7,7 @@ sudo apt-get install -y nginx
 cat << 'EOL' | sudo tee /etc/nginx/sites-available/flask_app
 upstream app_servers {
     server Add_App_Server_1:5000;
-    server dd_App_Server_2:5000;
+    server Add_App_Server_2:5000;
 }
 
 server {
