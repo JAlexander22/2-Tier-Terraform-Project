@@ -181,6 +181,7 @@ resource "aws_instance" "nginx_server" {
   key_name               = "Mono-Terraform-Key"
   subnet_id              = aws_subnet.public_subnet.id # Attach to a public subnet
   vpc_security_group_ids = [aws_security_group.nginx_sg.id]
+  iam_instance_profile = aws_iam_instance_profile.nginx_profile.name
 
   tags = {
     Name = "NginxServer"
